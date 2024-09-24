@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Framework\MessageQueue\Topology\Config\Xml\SchemaLocator" type="Vconnect\DelayedAmqp\MessageQueue\Topology\Config\Xml\SchemaLocator" />
+
+    <type name="Vconnect\DelayedAmqp\MessageQueue\Topology\Config\Xml\SchemaLocator">
+        <arguments>
+            <argument name="mergedSchemaUrn" xsi:type="string">urn:vconnect:module:Vconnect_DelayedAmqp:etc/topology_merged.xsd</argument>
+            <argument name="schemaUrn" xsi:type="string">urn:vconnect:module:Vconnect_DelayedAmqp:etc/topology.xsd</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\MessageQueue\Topology\Config\CompositeValidator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="fieldsTypes" xsi:type="object" sortOrder="20">Vconnect\DelayedAmqp\MessageQueue\Topology\Config\Validator\FieldsTypes</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
