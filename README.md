@@ -18,7 +18,7 @@ Configurations for communication.xml and queue_consumer.xml remain unchanged. De
 Example of queue_topology.xml
 ```xml
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:temashop:module:Temashop_DelayedAmqp:etc/topology.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:vconnect:module:Vconnect_DelayedAmqp:etc/topology.xsd">
     <exchange name="magento-delayed" type="x-delayed-message" connection="amqp">
         <binding id="processDelayedMessage"
                  topic="vconnect.delayed.example"
