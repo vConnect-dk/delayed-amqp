@@ -5,7 +5,7 @@ namespace Vconnect\DelayedAmqp\MessageQueue\Topology\Config\Validator;
 use Magento\Framework\MessageQueue\Topology\Config\ValidatorInterface;
 
 /**
- * Consumer config data validator for fields types.
+ * Topology config data validator for field types.
  */
 class FieldsTypes implements ValidatorInterface
 {
