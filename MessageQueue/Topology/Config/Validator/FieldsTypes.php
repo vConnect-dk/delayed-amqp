@@ -50,6 +50,9 @@ class FieldsTypes implements ValidatorInterface
         ];
 
         foreach ($fields as $fieldName => $expectedType) {
+            if (!array_key_exists($fieldName, $exchangeConfig)) {
+                continue;
+            }
             // phpcs:ignore Magento2.Functions.DiscouragedFunction
             $actualType = gettype($exchangeConfig[$fieldName]);
             if ($actualType !== $expectedType['type']) {
@@ -93,8 +96,15 @@ class FieldsTypes implements ValidatorInterface
      */
     private function validateBindings($exchangeName, $exchangeConfig, $bindingFields): void
     {
+        if (!isset($exchangeConfig['bindings']) || !is_array($exchangeConfig['bindings'])) {
+            return;
+        }
+
         foreach ($bindingFields as $bindFieldName => $bindExpectedType) {
             foreach ($exchangeConfig['bindings'] as $bindingConfig) {
+                if (!array_key_exists($bindFieldName, $bindingConfig)) {
+                    continue;
+                }
                 // phpcs:ignore Magento2.Functions.DiscouragedFunction
                 $actualType = gettype($bindingConfig[$bindFieldName]);
                 if ($actualType !== $bindExpectedType['type']) {
